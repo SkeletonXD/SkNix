@@ -3,12 +3,20 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    prismhack.url = "github:Diegiwg/PrismLauncher-Cracked";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nix-flatpak,  ... }: {
     nixosConfigurations.SKNix = nixpkgs.lib.nixosSystem {
+      specialArgs = { inputs=self.inputs; };
       modules = [
+        home-manager.nixosModules.home-manager
+        nix-flatpak.nixosModules.nix-flatpak
+        ./hardware-configuration.nix
         ./configuration.nix
+        ./skeletonxd.nix
       ];
     };
     nixosConfigurations.default = self.nixosConfigurations.SKNix;

@@ -26,7 +26,7 @@
   swapDevices = [ ];
   powerManagement = {
     enable = true;
-    cpuFreqGovernor = "schedutil";
+    cpuFreqGovernor = "performance";
   };
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   services.blueman.enable = true;
