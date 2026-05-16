@@ -20,15 +20,15 @@
       # "mirrors.tuna.tsinghua.edu.cn:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
   };
+  nix.package = pkgs.lix;
   #---------------[BOOT]--------------------------------------------------------
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod;
     tmp = {useTmpfs = true; cleanOnBoot = true;};
-    loader.timeout = 0; 
+    loader.timeout = 5; 
     loader.grub = {
       enable = true;
       device = "/dev/sdb";
-      useOSProber = true;
       timeoutStyle = "hidden";
       configurationLimit = 10;
       memtest86.enable = true;
@@ -44,7 +44,6 @@
   security = {
     polkit.enable = true;
     rtkit.enable = true;
-    isolate.enable = true;
   };
   services.clamav = {
     updater.enable = true; updater.interval = "hourly"; scanner.enable = false;
