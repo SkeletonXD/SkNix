@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
-    prismhack.url = "github:Diegiwg/PrismLauncher-Cracked";
+    elyprism.url = "github:ElyPrismLauncher/Launcher";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
