@@ -168,7 +168,7 @@
   xdg.portal = {enable = true; extraPortals = [ pkgs.xdg-desktop-portal-gtk ];};
   xdg.portal.configPackages = [ pkgs.gnome-session ];
   environment.systemPackages = with pkgs; [
-    tree helix kitty obsidian ffmpeg-headless ayugram-desktop
+    tree helix kitty obsidian ffmpeg-headless ayugram-desktop git
     inputs.prismhack.packages.${pkgs.system}.default nixd nixfmt
   ];
   home-manager.useGlobalPkgs = true;
