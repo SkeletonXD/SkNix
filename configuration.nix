@@ -21,6 +21,7 @@
     ];
   };
   nix.package = pkgs.lix;
+  
   #---------------[BOOT]--------------------------------------------------------
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod;
@@ -75,6 +76,7 @@
   #-------------[LOCALE]--------------------------------------------------------
   time.timeZone = "Europe/Moscow";
   i18n.defaultLocale = "ru_RU.UTF-8";
+  i18n.extraLocaleSettings = { LC_TIME = "en_US.UTF-8"; };
   console = {
     font = "cyr-sun16";
     useXkbConfig = true;
