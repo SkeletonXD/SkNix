@@ -35,7 +35,7 @@
     };
 
     xdg.configFile."hypr/hypr.conf".text = ''
-        # ---------- [GENERAL] ---------------------------------------------------------
+# ---------- [GENERAL] ---------------------------------------------------------
 gaps_in=5
 border_size=1
 gaps_out=20
@@ -88,15 +88,15 @@ Bar {
 }
 
 # ----------- [ BINDS ] --------------------------------------------------------
-bind=SUPER,R,exec,${pkgs.rofi} -show drun
-bind=SUPER,T,exec,${pkgs.kitty}
+bind=SUPER,R,exec,${pkgs.lib.getExe pkgs.rofi} -show drun
+bind=SUPER,T,exec,${pkgs.lib.getExe pkgs.kitty}
 bind=SUPER,M,exec,pkill Hypr
 bind=SUPER,B,exec,app.zen_browser.zen
 bind=SUPER,E,exec,Thunar
-bind=SUPER,A,exec,${pkgs.ayugram-desktop}
-bind=SHIFTSUPER,S,exec,${pkgs.scrot} -ifs - | ${pkgs.xclip} -selection clipboard -t image/png
-bind=SUPER,Print,exec,${pkgs.scrot} -ifu - | ${pkgs.xclip} -selection clipboard -t image/png
-bind=ALTSUPER,Print,exec,${pkgs.scrot} -if - | ${pkgs.xclip} -selection clipboard -t image/png
+bind=SUPER,A,exec,${pkgs.lib.getExe pkgs.ayugram-desktop}
+bind=SHIFTSUPER,S,exec,${pkgs.lib.getExe pkgs.scrot} -ifs - | ${pkgs.lib.getExe pkgs.xclip} -selection clipboard -t image/png
+bind=SUPER,Print,exec,${pkgs.lib.getExe pkgs.scrot} -ifu - | ${pkgs.lib.getExe pkgs.xclip} -selection clipboard -t image/png
+bind=ALTSUPER,Print,exec,${pkgs.lib.getExe pkgs.scrot} -if - | ${pkgs.lib.getExe pkgs.xclip} -selection clipboard -t image/png
 
 bind=SUPER,C,killactive,
 bind=SUPER,F,fullscreen,
@@ -108,11 +108,11 @@ bind=,XF86AudioLowerVolume,exec,wpctl set-volume -l 1.0 @DEFAULT_SINK@ 5%-
 bind=,XF86AudioMute,exec,wpctl set-mute @DEFAULT_SINK@ toggle
 # bind  = , XF86AudioMicMute,      exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 # Медиа-кнопки (работают даже когда Hypr заблокирован благодаря bindl)
-bind=,XF86AudioPlay,exec,${pkgs.playerctl} play-pause
-bind=,XF86AudioPause,exec,${pkgs.playerctl} play-pause
-bind=,XF86AudioNext,exec,${pkgs.playerctl} next
-bind=,XF86AudioPrev,exec,${pkgs.playerctl} previous
-bind=,XF86AudioStop,exec,${pkgs.playerctl} stop
+bind=,XF86AudioPlay,exec,${pkgs.lib.getExe pkgs.playerctl} play-pause
+bind=,XF86AudioPause,exec,${pkgs.lib.getExe pkgs.playerctl} play-pause
+bind=,XF86AudioNext,exec,${pkgs.lib.getExe pkgs.playerctl} next
+bind=,XF86AudioPrev,exec,${pkgs.lib.getExe pkgs.playerctl} previous
+bind=,XF86AudioStop,exec,${pkgs.lib.getExe pkgs.playerctl} stop
 
 bind=SUPER,1,workspace,1
 bind=SUPER,2,workspace,2
@@ -144,7 +144,7 @@ bind=SUPER,right,movefocus,r
 bind=SUPER,down,movefocus,d
 bind=SUPER,left,movefocus,l
 
-bind=SUPER,L,exec,env XSECURELOCK_PASSWORD_PROMPT=time_hex XSECURELOCK_AUTH_SOUNDS=1 XSECURELOCK_SHOW_KEYBOARD_LAYOUT=0 ${pkgs.xsecurelock}
+bind=SUPER,L,exec,env XSECURELOCK_PASSWORD_PROMPT=time_hex XSECURELOCK_AUTH_SOUNDS=1 XSECURELOCK_SHOW_KEYBOARD_LAYOUT=0 ${pkgs.lib.getExe pkgs.xsecurelock}
 
 # ----------- [AUTORUN] --------------------------------------------------------
 windowrule=workspace 9,class:Throne
@@ -152,16 +152,16 @@ exec-once=Throne
  
 
 windowrule=workspace 2,class:AyuGram
-exec-once=${pkgs.ayugram-desktop}
+exec-once=${pkgs.lib.getExe pkgs.ayugram-desktop}
 
 
 windowrule=workspace 1,class:app.zen_browser.zen
 exec-once=app.zen_browser.zen
 
 
-exec-once=${pkgs.xss-lock} -l -- env XSECURELOCK_PASSWORD_PROMPT=time_hex XSECURELOCK_AUTH_SOUNDS=1 XSECURELOCK_SHOW_KEYBOARD_LAYOUT=0 ${pkgs.xsecurelock}
-exec=${pkgs.xrandr} --output VGA-0 --mode 1680x1050 --pos 0x30 --rotate normal --output DVI-D-0 --off --output HDMI-0 --primary --mode 1920x1080 --pos 1680x0 --rotate normal
-exec=${pkgs.feh} --bg-center ~/Изображения/2.png ~/Изображения/1.png
+exec-once=${pkgs.lib.getExe pkgs.xss-lock} -l -- env XSECURELOCK_PASSWORD_PROMPT=time_hex XSECURELOCK_AUTH_SOUNDS=1 XSECURELOCK_SHOW_KEYBOARD_LAYOUT=0 ${pkgs.lib.getExe pkgs.xsecurelock}
+exec=${pkgs.lib.getExe pkgs.xrandr} --output VGA-0 --mode 1680x1050 --pos 0x30 --rotate normal --output DVI-D-0 --off --output HDMI-0 --primary --mode 1920x1080 --pos 1680x0 --rotate normal
+exec=${pkgs.lib.getExe pkgs.feh} --bg-center ~/Изображения/2.png ~/Изображения/1.png
       '';
     home.stateVersion = "25.11"  ;
   };
