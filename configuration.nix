@@ -169,7 +169,7 @@
   xdg.portal.configPackages = [ pkgs.gnome-session ];
   environment.systemPackages = with pkgs; [
     tree helix kitty obsidian ffmpeg-headless ayugram-desktop git
-    inputs.prismhack.packages.${pkgs.system}.default nixd nixfmt
+    inputs.prismhack.packages.${stdenv.hostPlatform.system}.default nixd nixfmt
   ];
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
