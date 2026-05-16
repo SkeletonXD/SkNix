@@ -9,6 +9,7 @@
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     substituters = [
+      "https://cache.nixos.org"
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
     ];
     trusted-substituters = [
@@ -167,8 +168,8 @@
   xdg.portal = {enable = true; extraPortals = [ pkgs.xdg-desktop-portal-gtk ];};
   xdg.portal.configPackages = [ pkgs.gnome-session ];
   environment.systemPackages = with pkgs; [
-    tree helix kitty obsidian ffmpeg-headless
-    inputs.prismhack.packages.${pkgs.system}.default
+    tree helix kitty obsidian ffmpeg-headless ayugram-desktop
+    inputs.prismhack.packages.${pkgs.system}.default nixd nixfmt
   ];
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
