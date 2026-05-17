@@ -82,7 +82,7 @@ Bar {
     module=left,X,0xff8000ff,0xffffffff,1,workspaces
     module=pad,left,10
     module=right,,0xff7000dd,0xff7000dd,1,tray
-    module=center,,0xffffffff,0x77ff3333,1000,$date +%a,\ %-d\ %b.\ \ %r| tr -d '\n' && playerctl metadata -f "| \{\{title\}\} - \{\{artist\}\}"$
+    module=center,,0xffffffff,0x77ff3333,1000,$date '+%a, %-d %b.  %I:%M %P '| tr -d '\n' && '${pkgs.lib.getExe pkgs.playerctl}' metadata -f "| \{\{title\}\} - \{\{artist\}\}"$
     module=right,,0xffffffff,0x77ff3333,100,$wpctl get-volume @DEFAULT_SINK@$
     module=right,,0xffffffff,0x77ff3333,100,$gamemoded -s$ |
 }
