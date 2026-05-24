@@ -10,6 +10,7 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   boot.blacklistedKernelModules = [ "simpledrm" ];
+  boot.kernelParams = [  "nvidia-drm.modeset=1" "nvidia-drm.fbdev=1" "video=HDMI-A-1:1920x1080@60" "video=VGA-1:1680x1050@60" "video=DVI-D-0:d" "fbcon=map:01" ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/5afe0695-7bb4-4c67-bf1e-2dfdc7f65759";
