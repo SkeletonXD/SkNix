@@ -30,6 +30,8 @@
     loader.grub = {
       enable = true;
       device = "/dev/sdb";
+      gfxmodeBios = "1920x1080";
+      gfxpayloadBios = "keep";
       timeoutStyle = "hidden";
       configurationLimit = 10;
       memtest86.enable = true;
