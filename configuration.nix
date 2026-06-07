@@ -170,7 +170,7 @@
   #------------[SOFTWARE]-------------------------------------------------------
   xdg.portal = {enable = true; extraPortals = [ pkgs.xdg-desktop-portal-gtk ];};
   xdg.portal.configPackages = [ pkgs.gnome-session ];
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [ simple-scan 
     tree helix kitty obsidian ffmpeg-headless ayugram-desktop git zellij
     inputs.elyprism.packages.${stdenv.hostPlatform.system}.default nixd nixfmt
   ];
