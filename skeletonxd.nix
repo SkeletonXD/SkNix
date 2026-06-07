@@ -4,7 +4,7 @@
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [ "wheel" "audio" "kvm" "video" "render" "bluetooth"
-                    "libvirtd" "input" ];
+                    "libvirtd" "input" "scanner" "lp" ];
   };
 
   home-manager.users.skeletonxd = {pkgs, ...}: {    

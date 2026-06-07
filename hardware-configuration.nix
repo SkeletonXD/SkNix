@@ -67,5 +67,9 @@
         Policy.AutoEnable = true;
       };
     };
+    sane = {
+      enable = true;
+      extraBackends = [ pkgs.epkowa ];
+    };
   };
 }
