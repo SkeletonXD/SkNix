@@ -32,7 +32,7 @@
       device = "/dev/sdb";
       gfxmodeBios = "1920x1080";
       gfxpayloadBios = "keep";
-      timeoutStyle = "hidden";
+      # timeoutStyle = "hidden";
       configurationLimit = 10;
       memtest86.enable = true;
     };
