@@ -185,6 +185,7 @@
   home-manager.useUserPackages = true;
   programs = {
     mtr.enable = true;
+    hyprland.enable = true;
     throne = {
       enable = true;
       tunMode = {
