@@ -144,9 +144,9 @@
     windowManager.hypr.enable = true;
     xkb = {layout = "us,ru"; options = "grp:win_space_toggle";};
   };
-  services.displayManager.ly.enable = true;
+  services.displayManager.ly.enable = false;
   services.picom = {
-    enable = true;
+    enable = false;
     backend = "glx";
     vSync = true;
     shadow = true;
