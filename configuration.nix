@@ -191,6 +191,7 @@
                              thunar-media-tags-plugin thunar-volman];
     };
     starship.enable = true;
+    firejail.enable = true;
     gamemode.enable = true;
     virt-manager.enable = true;
     gnupg.agent = { enable = true; enableSSHSupport = true; };
