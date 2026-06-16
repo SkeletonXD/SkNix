@@ -44,7 +44,7 @@
     graphics = {
       enable = true;
       enable32Bit = true;
-      extraPackages = with pkgs; [ nvidia-vaapi-driver ];
+      extraPackages = with pkgs; [ nvidia-vaapi-driver egl-wayland ];
       extraPackages32 = with pkgs; [
         nvidia-vaapi-driver];
     };
