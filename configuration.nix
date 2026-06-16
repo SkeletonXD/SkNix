@@ -86,9 +86,7 @@
   #------------[SERVICES]-------------------------------------------------------
   services = {
     desktopManager.plasma6.enable = true;
-    displayManager.plasma-login-manager.enable = true;
-    displayManager.defaultSession = "plasmax11";
-
+    #displayManager.plasma-login-manager.enable = true;
     avahi = {
       enable = true;
       nssmdns4 = true;
@@ -172,20 +170,20 @@
     pulse.enable = true;
   };
   #------------[SOFTWARE]-------------------------------------------------------
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    elisa konsole plasma-browser-integration
-  ];
+  #environment.plasma6.excludePackages = with pkgs.kdePackages; [
+  #  elisa konsole plasma-browser-integration
+  #];
   xdg.portal = {enable = true; extraPortals = [ pkgs.xdg-desktop-portal-gtk ];};
   xdg.portal.configPackages = [ pkgs.gnome-session ];
   environment.systemPackages = with pkgs; [ simple-scan 
     tree helix kitty obsidian ffmpeg-headless ayugram-desktop git zellij
     inputs.elyprism.packages.${stdenv.hostPlatform.system}.default nixd nixfmt
+    gnome-console
   ];
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   programs = {
     mtr.enable = true;
-    hyprland.enable = true;
     throne = {
       enable = true;
       tunMode = {
@@ -218,5 +216,15 @@
   system = {
     stateVersion = "25.11";
   };
+  #-----------
+   services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
+
+  # To disable installing GNOME's suite of applications
+  # and only be left with GNOME shell.
+  services.gnome.core-apps.enable = false;
+  services.gnome.core-developer-tools.enable = false;
+  services.gnome.games.enable = false;
+  environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs ];
 }
 
