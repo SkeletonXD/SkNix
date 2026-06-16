@@ -85,6 +85,10 @@
   };
   #------------[SERVICES]-------------------------------------------------------
   services = {
+    desktopManager.plasma6.enable = true;
+    displayManager.plasma-login-manager.enable = true;
+    displayManager.defaultSession = "plasmax11";
+
     avahi = {
       enable = true;
       nssmdns4 = true;
@@ -168,6 +172,9 @@
     pulse.enable = true;
   };
   #------------[SOFTWARE]-------------------------------------------------------
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    elisa konsole plasma-browser-integration
+  ];
   xdg.portal = {enable = true; extraPortals = [ pkgs.xdg-desktop-portal-gtk ];};
   xdg.portal.configPackages = [ pkgs.gnome-session ];
   environment.systemPackages = with pkgs; [ simple-scan 
