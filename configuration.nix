@@ -26,15 +26,16 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod;
     tmp = {useTmpfs = true; cleanOnBoot = true;};
-    loader.timeout = 5; 
+    loader.timeout = 5;
     loader.grub = {
       enable = true;
       device = "/dev/sdb";
       gfxmodeBios = "1920x1080";
       gfxpayloadBios = "keep";
-      timeoutStyle = "countdown";
+      timeoutStyle = "menu";
       configurationLimit = 10;
       memtest86.enable = true;
+      useOSProber = true;
     };
   };
   #-----------[OPTIMISATIONS]---------------------------------------------------
@@ -85,8 +86,6 @@
   };
   #------------[SERVICES]-------------------------------------------------------
   services = {
-    desktopManager.plasma6.enable = true;
-    #displayManager.plasma-login-manager.enable = true;
     avahi = {
       enable = true;
       nssmdns4 = true;
@@ -142,9 +141,9 @@
     windowManager.hypr.enable = true;
     xkb = {layout = "us,ru"; options = "grp:win_space_toggle";};
   };
-  services.displayManager.ly.enable = false;
+  services.displayManager.ly.enable = true;
   services.picom = {
-    enable = false;
+    enable = true;
     backend = "glx";
     vSync = true;
     shadow = true;
@@ -170,9 +169,6 @@
     pulse.enable = true;
   };
   #------------[SOFTWARE]-------------------------------------------------------
-  #environment.plasma6.excludePackages = with pkgs.kdePackages; [
-  #  elisa konsole plasma-browser-integration
-  #];
   xdg.portal = {enable = true; extraPortals = [ pkgs.xdg-desktop-portal-gtk ];};
   xdg.portal.configPackages = [ pkgs.gnome-session ];
   environment.systemPackages = with pkgs; [ simple-scan 
@@ -216,15 +212,5 @@
   system = {
     stateVersion = "25.11";
   };
-  #-----------
-   services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
-
-  # To disable installing GNOME's suite of applications
-  # and only be left with GNOME shell.
-  services.gnome.core-apps.enable = false;
-  services.gnome.core-developer-tools.enable = false;
-  services.gnome.games.enable = false;
-  environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs ];
 }
 
