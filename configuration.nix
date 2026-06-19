@@ -133,6 +133,7 @@
         cache = false; verbose = true;
       };
     };
+    udisks2.enable = true;
   };
   #------------[GRAPHICS]-------------------------------------------------------
   services.xserver = {
