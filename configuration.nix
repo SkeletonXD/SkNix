@@ -10,11 +10,11 @@
     experimental-features = [ "nix-command" "flakes" ];
     substituters = [
       "https://cache.nixos.org"
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
     ];
     trusted-substituters = [
       "https://cache.nixos.org/"
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
     ];
     trusted-public-keys = [
       # "mirrors.tuna.tsinghua.edu.cn:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
