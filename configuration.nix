@@ -39,11 +39,10 @@
     };
   };
   #-----------[OPTIMISATIONS]---------------------------------------------------
-  systemd.services.NetworkManager-wait-online.enable = false;
-  systemd.services.wg-quick-zhurman = {
-    wantedBy = lib.mkForce [ "graphical.target" ];
-    after = [ "graphical.target" "NetworkManager.service" ];
-  };
+  # systemd.services.wg-quick-zhurman = {
+  #   wantedBy = lib.mkForce [ "graphical.target" ];
+  #   after = [ "graphical.target" "NetworkManager.service" ];
+  # };
   #-------------[SECURITY]------------------------------------------------------
   security = {
     polkit.enable = true;
@@ -68,16 +67,17 @@
     wireguard.enable = true;
     networkmanager.enable = true;
     nameservers = [ "1.1.1.1" "8.8.8.8" ];
-    wg-quick.interfaces.zhurman.configFile = "/etc/nixos/Zhurman.conf";
+    # wg-quick.interfaces.zhurman.configFile = "/etc/nixos/Zhurman.conf";
     firewall = {
       enable = true;
       checkReversePath = false;
-      allowedTCPPorts = [25565 47584];
-      allowedUDPPorts = [47584 51822];
+      # allowedTCPPorts = [25565 47584];
+      # allowedUDPPorts = [47584 51822];
     };
   };
   #-------------[LOCALE]--------------------------------------------------------
   time.timeZone = "Europe/Moscow";
+  time.hardwareClockInLocalTime = true;
   i18n.defaultLocale = "ru_RU.UTF-8";
   i18n.extraLocaleSettings = { LC_TIME = "en_US.UTF-8"; };
   console = {
@@ -86,6 +86,7 @@
   };
   #------------[SERVICES]-------------------------------------------------------
   services = {
+    cinnamon.apps.enable = true;
     avahi = {
       enable = true;
       nssmdns4 = true;
@@ -96,10 +97,6 @@
       };
     };
     openssh.enable = true;
-    zerotierone = {
-      enable = false;
-      joinNetworks = [ "56374ac9a498410a" ];
-    };
     iperf3 = {
       enable = true;
       openFirewall = true;
@@ -122,17 +119,6 @@
       browsing = true;
       openFirewall = true;
     };
-    dnsproxy = {
-      enable = false;
-      settings = { listen = [ "127.0.0.1:53" "[::1]:53" ];
-        upstream = [
-          "tls://xbox-dns.ru" "tls://dns.comss.one"
-          "https://xbox-dns.ru/dns-query" "https://dns.comss.one/dns-query"
-        ];
-        bootstrap = [ "1.1.1.1" "1.0.0.1" "8.8.8.8" "8.8.4.4" ];
-        cache = false; verbose = true;
-      };
-    };
     udisks2.enable = true;
   };
   #------------[GRAPHICS]-------------------------------------------------------
@@ -140,6 +126,7 @@
     enable = true;
     videoDrivers = [ "nvidia" ];
     windowManager.hypr.enable = true;
+    desktopManager.cinnamon.enable = true;
     xkb = {layout = "us,ru"; options = "grp:win_space_toggle";};
   };
   services.displayManager.ly.enable = true;
@@ -175,7 +162,6 @@
   environment.systemPackages = with pkgs; [ simple-scan 
     tree helix kitty obsidian ffmpeg-headless ayugram-desktop git zellij
     inputs.elyprism.packages.${stdenv.hostPlatform.system}.default nixd nixfmt
-    gnome-console
   ];
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
