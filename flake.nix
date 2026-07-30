@@ -17,6 +17,7 @@
         ./hardware-configuration.nix
         ./configuration.nix
         ./skeletonxd.nix
+        ./miraruen.nix
       ];
     };
     nixosConfigurations.default = self.nixosConfigurations.SKNix;
