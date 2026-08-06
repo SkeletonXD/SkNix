@@ -162,6 +162,7 @@
   environment.systemPackages = with pkgs; [ simple-scan 
     tree helix kitty obsidian ffmpeg-headless ayugram-desktop git zellij
     inputs.elyprism.packages.${stdenv.hostPlatform.system}.default nixd nixfmt
+    onlyoffice-desktopeditors
   ];
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
