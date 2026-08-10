@@ -71,7 +71,7 @@
     firewall = {
       enable = true;
       checkReversePath = false;
-      # allowedTCPPorts = [25565 47584];
+      allowedTCPPorts = [25565];
       # allowedUDPPorts = [47584 51822];
     };
   };
