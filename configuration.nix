@@ -167,6 +167,12 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   programs = {
+    steam = {
+      enable = true;
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
+    };
     mtr.enable = true;
     throne = {
       enable = true;
