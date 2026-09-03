@@ -118,6 +118,17 @@
       allowFrom = [ "all" ];
       browsing = true;
       openFirewall = true;
+      ensurePrinters = [
+    {
+      name = "HP_LaserJet_P1005";
+      deviceUri = "hp:/usb/HP_LaserJet_P1005?serial=BB0AEH3";
+      model = "drv:///hp/hpcups.drv/hp-laserjet_p1005.ppd";
+      options = {
+        PageSize = "A4"; # Можно сразу жестко задать дефолтный формат бумаги
+      };
+    }
+  ];
+  # Делаем этот принтер устройством по умолчанию для всех приложений
     };
     udisks2.enable = true;
   };
