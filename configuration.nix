@@ -111,6 +111,10 @@
                 "moe.launcher.an-anime-game-launcher" ];
     };
     udev.packages = with pkgs; [ hplipWithPlugin ];
+    udev.extraRules = ''
+      # Ручной перехват и загрузка прошивки из состава hplipWithPlugin для HP LaserJet P1005
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0", ATTRS{idProduct}=="3d17", ACTION=="add", RUN+="${pkgs.bash}/bin/bash -c '${pkgs.gzip}/bin/zcat ${pkgs.hplipWithPlugin}/share/hplip/data/firmware/hp_laserjet_p1005.fw.gz | lp -d HP-LaserJet-P1005 -o raw'"
+    '';
     printing = {
       enable = true;
       drivers = with pkgs; [ hplipWithPlugin ];
@@ -118,17 +122,6 @@
       allowFrom = [ "all" ];
       browsing = true;
       openFirewall = true;
-      ensurePrinters = [
-    {
-      name = "HP_LaserJet_P1005";
-      deviceUri = "hp:/usb/HP_LaserJet_P1005?serial=BB0AEH3";
-      model = "drv:///hp/hpcups.drv/hp-laserjet_p1005.ppd";
-      options = {
-        PageSize = "A4"; # Можно сразу жестко задать дефолтный формат бумаги
-      };
-    }
-  ];
-  # Делаем этот принтер устройством по умолчанию для всех приложений
     };
     udisks2.enable = true;
   };
