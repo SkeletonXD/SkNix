@@ -31,7 +31,7 @@
   };
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   services.blueman.enable = true;
-
+  programs.solaar.enable = true;
   hardware = {
     block.defaultScheduler = "bfq";
     enableAllHardware = true;
@@ -39,7 +39,6 @@
     cpu.intel.updateMicrocode = true;
     logitech.wireless = {
       enable = true;
-      enableGraphical = true;
     };
     graphics = {
       enable = true;
