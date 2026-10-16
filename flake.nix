@@ -3,8 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    elyprism.url = "github:ElyPrismLauncher/Launcher";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    elyprism = {
+      url = "github:ElyPrismLauncher/Launcher";
+      inputs.nixpkgs.follows =  "nixpkgs";
+    };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
