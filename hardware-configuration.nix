@@ -7,7 +7,7 @@
 
   boot.initrd.availableKernelModules = [ "uhci_hcd" "ehci_pci" "ahci" "xhci_pci" "uas" "usbhid" "sd_mod" "sr_mod" ];
 #  boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-intel" "ntsync" ];
   boot.extraModulePackages = [ ];
   boot.blacklistedKernelModules = [ "simpledrm" ];
   boot.kernelParams = [  "nvidia-drm.modeset=1" "nvidia-drm.fbdev=1" "video=HDMI-A-1:1920x1080@60" "video=VGA-1:1680x1050@60" "video=DVI-D-0:d" "fbcon=map:01" ];
